@@ -14,7 +14,10 @@ public class Performer implements Comparator<Avenger> {
 		}else if (performer1 < performer2) {
 			result = 1;
 		}else {
-			result = a1.getHeroAlias().compareTo(a2.getHeroAlias());
+			result = a1.getHeroName().length() - a2.getHeroName().length();
+			if (result == 0) {
+				result = a1.getHeroAlias().compareTo(a2.getHeroAlias());
+			}
 		}
 		return result;
 	}
