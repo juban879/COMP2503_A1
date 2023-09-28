@@ -88,6 +88,16 @@ public class Avenger implements Comparable<Avenger>{
 								performer + "mentioned" + "(n:" + nameFreq + " + a: " + 
 								aliasFreq + " + p: " + performerFreq + ")" + "time(s)"; }
 	
+	public boolean equals(Avenger a) {
+		boolean flag = false;
+		
+		if(this.getHeroAlias().equals(a.getHeroAlias())) {
+			flag = true;
+		}
+		
+		return flag;
+	}
+	
 	
 	
 }
