@@ -42,33 +42,62 @@ public class A1 implements Comparator<Avenger >{
 	 * how many times avengers are mentioned by alias or last name or performer's last name.
 	 */
 	private void readInput() {
-		String textInput = input.next();
-		textInput = textInput.trim().toLowerCase().replaceAll("'"," ").replaceAll("[^a-zA-Z\\d]","");
-		
+		// this boolean flag turns true if an avenger alias name, hero name or performer name is found in the avengersArrayList 
+		boolean avengerFound = false;
+		// ignore these unused variables for now
+		boolean aliasFound = false;
+		boolean heroNameFound = false;
+		boolean performerNameFound = false;
+		/**
+		 * the following while loop checks the input stream for words that match the alias name, hero name and performer name of an avenger
+		 * if the word is found, a for loop will check the avengersArrayList to determine if an avenger with that alias name, hero name or performer name has already been added to the list
+		 * if an avenger with those properties has not been added, a new avenger object will be created and added to the list.  
+		 */
 		while (input.hasNext()) {
 			String word = input.next();
-			word = word.trim().toLowerCase().replaceAll("'", "").replaceAll("[^a-zA-Z\\d]", "");
+			word = word.trim().toLowerCase().replaceAll("[^a-zA-Z]", "");
 			
-			if (word.length() > 0) {
+			if (!word.isBlank()) {
 				totalwordcount++;
-			} for (int r = 0; r < avengerRoster.length; r++) {
-				for (int c = 0; c < avengerRoster[r].length; c++) {
-					if (r == 0) {
-						
+				for(String[] avengerData : avengerRoster ){
+					if ( word.equals(avengerData[0]) || word.equals(avengerData[1]) || word.equals(avengerData[2]) ) {
+						avengerFound = searchAvengerList(word)[0] || searchAvengerList(word)[1] || searchAvengerList(word)[2];
+						if(!avengerFound) {
+							Avenger newAdvenger = new Avenger(avengerData[0], avengerData[1], avengerData[2]);
+							if (word.equals(avengerData[0])) {
+								newAdvenger.setAliasFreq();
+							}else if (word.equals(avengerData[1])) {
+								newAdvenger.setNameFreq();
+							}else if (word.equals(avengerData[2])) {
+								newAdvenger.setPerformerFreq();
+							}
+							avengersArrayList.add(newAdvenger);
+						}
 					}
-				
 				}
-			
-			}
-	
+			}	
 		}
 	}
 	
 	/*
 	 * Create helper functions as needed
 	 */
-
-
+	private boolean[] searchAvengerList(String word) {
+		boolean[] avengerFlag = {false, false, false};
+		for (Avenger avenger : avengersArrayList ) {
+			if (avenger.getHeroAlias().equals(word)) {
+				avengerFlag[0] = true;
+				avenger.setAliasFreq();
+			}else if (avenger.getHeroName().equals(word)) {
+				avengerFlag[1] = true;
+				avenger.setNameFreq();
+			}else if (avenger.getPerformer().equals(word)) {
+				avengerFlag[2] = true;
+				avenger.setPerformerFreq();
+			}
+		}
+		return avengerFlag;
+	}
 	/**
 	 * print the results
 	 */
@@ -86,10 +115,8 @@ public class A1 implements Comparator<Avenger >{
 		System.out.println();
 		
 	}
-
 	
 	
-
 	@Override
 	public int compare(Avenger a1, Avenger a2) {
 		// TODO Auto-generated method stub

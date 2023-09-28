@@ -9,10 +9,10 @@ public class Avenger implements Comparable<Avenger>{
 	private int aliasFreq;
 	private int performerFreq;
 	
-	public Avenger() {
-		heroName = "";
-		heroAlias = "";
-		performer = "";
+	public Avenger(String alias, String heroHame,  String performer) {
+		this.heroName = heroName;
+		this.heroAlias = alias;
+		this.performer = performer;
 		nameFreq = 0;
 		aliasFreq = 0;
 		performerFreq = 0;
@@ -51,24 +51,24 @@ public class Avenger implements Comparable<Avenger>{
 		return nameFreq;
 	}
 	
-	public void setNameFreq(int nameFreq) {
-		this.nameFreq = nameFreq;
+	public void setNameFreq() {
+		this.nameFreq++;
 	}
 	
 	public int getAliasFreq() {
 		return aliasFreq; 
 	}
 	
-	public void setAliasFreq(int aliasFreq) {
-		this.aliasFreq = aliasFreq;
+	public void setAliasFreq() {
+		this.aliasFreq++;
 	}
 	
 	public int getPerformerFreq() {
 		return performerFreq;
 	}
 	
-	public void setPerformerFreq(int performerFreq) {
-		this.performerFreq = performerFreq;
+	public void setPerformerFreq() {
+		this.performerFreq++;
 	}
 
 	public String toString() { return heroAlias + "aka" + heroName + "performed by" + 
