@@ -1,3 +1,4 @@
+
 public class Avenger implements Comparable<Avenger>{
 	
 
@@ -9,7 +10,7 @@ public class Avenger implements Comparable<Avenger>{
 	private int aliasFreq;
 	private int performerFreq;
 	
-	public Avenger(String alias, String heroHame,  String performer) {
+	public Avenger(String alias, String heroName,  String performer) {
 		this.heroName = heroName;
 		this.heroAlias = alias;
 		this.performer = performer;
@@ -19,8 +20,20 @@ public class Avenger implements Comparable<Avenger>{
 	}
 	
 	@Override
-	public int compareTo(Avenger o) {
-		return 0;
+	// compare frequency of avenger mentions from most frequent to least, then by performer last name ascending in the case of tie
+	public int compareTo(Avenger a) {
+		int result = 0;
+		int freq1 = this.getAliasFreq() + this.getNameFreq() + this.getPerformerFreq();
+		int freq2 = a.getAliasFreq() + a.getNameFreq() + a.getPerformerFreq();
+		
+		if (freq1 > freq2) {
+			result = -1;
+		}else if (freq1 < freq2) {
+			result = 1;
+		}else {
+			result = this.getPerformer().compareTo(a.getPerformer());
+		}
+		return result;
 	}
 
 	public String getHeroName() { 
