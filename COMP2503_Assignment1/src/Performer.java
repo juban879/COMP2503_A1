@@ -3,6 +3,11 @@ import java.util.Comparator;
 public class Performer implements Comparator<Avenger> {
 
 	@Override
+	/*
+	 * This method orders avenger from most frequently mentioned performers from most to least, then 
+	 * ascending order or hero's name length if ties, then ascending alphabetical order of alias if
+	 * another tie.
+	 */
 	public int compare(Avenger a1, Avenger a2) {
 		
 		int result = 0;
