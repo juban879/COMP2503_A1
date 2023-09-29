@@ -84,9 +84,11 @@ public class Avenger implements Comparable<Avenger>{
 		this.performerFreq++;
 	}
 
-	public String toString() { return heroAlias + "aka" + heroName + "performed by" + 
-								performer + "mentioned" + "(n:" + nameFreq + " + a: " + 
-								aliasFreq + " + p: " + performerFreq + ")" + "time(s)"; }
+	public String toString() { return heroAlias + " aka " + heroName + " performed by " + 
+								performer + " mentioned " + " (n: " + nameFreq + " + a: " + 
+								aliasFreq + " + p: " + performerFreq + ") " + "time(s)\n"; 
+	
+	}
 	
 	public boolean equals(Avenger a) {
 		boolean flag = false;
@@ -98,7 +100,6 @@ public class Avenger implements Comparable<Avenger>{
 		return flag;
 	}
 	
-	
-	
+
 }
 

@@ -1,4 +1,6 @@
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ import java.util.Scanner;
  * @date Fall 2023
  */
 
-public class A1 implements Comparator<Avenger >{
+public class A1 {
 	
 	public String[][] avengerRoster = {
 			{ "captainamerica", "rogers", "evans" }, { "ironman", "stark", "downey" },
@@ -20,12 +22,14 @@ public class A1 implements Comparator<Avenger >{
 			{ "blackpanther", "tchalla", "boseman" }, { "thor", "odinson", "hemsworth" },
 			{ "hawkeye", "barton", "renner" }, { "warmachine", "rhodes", "cheadle" },
 			{ "spiderman", "parker", "holland" }, { "wintersoldier", "barnes", "stan"} };
-			
+		
+	
 	Scanner input = new Scanner(System.in);
 	private int topN = 4;
 	private int totalwordcount = 0;
 	private ArrayList<Avenger> avengersArrayList = new ArrayList<>();
-
+	
+	
 
 	public static void main(String[] args) {
 		A1 a1 = new A1();
@@ -34,7 +38,7 @@ public class A1 implements Comparator<Avenger >{
 	
 	public void run() {
 		readInput();
-		printResults();
+		printResults(avengersArrayList);
 	}
 	
 	/**
@@ -53,6 +57,7 @@ public class A1 implements Comparator<Avenger >{
 		 * if the word is found, a for loop will check the avengersArrayList to determine if an avenger with that alias name, hero name or performer name has already been added to the list
 		 * if an avenger with those properties has not been added, a new avenger object will be created and added to the list.  
 		 */
+		System.out.println("Enter input");
 		while (input.hasNext()) {
 			String word = input.next();
 			word = word.trim().toLowerCase().replaceAll("[^a-zA-Z]", "");
@@ -62,21 +67,28 @@ public class A1 implements Comparator<Avenger >{
 				for(String[] avengerData : avengerRoster ){
 					if ( word.equals(avengerData[0]) || word.equals(avengerData[1]) || word.equals(avengerData[2]) ) {
 						avengerFound = searchAvengerList(word)[0] || searchAvengerList(word)[1] || searchAvengerList(word)[2];
+						
+							
 						if(!avengerFound) {
 							Avenger newAdvenger = new Avenger(avengerData[0], avengerData[1], avengerData[2]);
 							if (word.equals(avengerData[0])) {
 								newAdvenger.setAliasFreq();
+								
 							}else if (word.equals(avengerData[1])) {
 								newAdvenger.setNameFreq();
+								
 							}else if (word.equals(avengerData[2])) {
 								newAdvenger.setPerformerFreq();
+								
 							}
 							avengersArrayList.add(newAdvenger);
+							
 						}
 					}
 				}
 			}	
 		}
+		input.close();
 	}
 	
 	/*
@@ -88,42 +100,56 @@ public class A1 implements Comparator<Avenger >{
 			if (avenger.getHeroAlias().equals(word)) {
 				avengerFlag[0] = true;
 				avenger.setAliasFreq();
+				
 			}else if (avenger.getHeroName().equals(word)) {
 				avengerFlag[1] = true;
 				avenger.setNameFreq();
+				
 			}else if (avenger.getPerformer().equals(word)) {
 				avengerFlag[2] = true;
 				avenger.setPerformerFreq();
+				
 			}
 		}
 		return avengerFlag;
 	}
+	private void printAvengersList() {
+		for (Avenger avg : avengersArrayList) {
+			System.out.println(avg.toString());
+		}
+	}
 	/**
 	 * print the results
 	 */
-	private void printResults() {
-		System.out.println("Total number of words:" + totalwordcount);
-		System.out.println("Number of Avengers Mentioned:" + avengersArrayList.size());
+	private void printResults(ArrayList<Avenger> avengerArrayLists) {
+		System.out.println("Total number of words: " + totalwordcount);
+		System.out.println("Number of Avengers Mentioned: " + avengersArrayList.size());
 		System.out.println();
 		System.out.println("All avengers in the order they appeared in the input steam:");
-		System.out.println();
+		printAvengersList();
 		System.out.println("Top " + topN + "most popular avengers:");
-		System.out.println();
+		Collections.sort(avengerArrayLists);
+		System.out.println(avengerArrayLists.get(0).toString());
+		System.out.println(avengerArrayLists.get(1).toString());
+		System.out.println(avengerArrayLists.get(2).toString());
+		System.out.println(avengerArrayLists.get(3).toString());
+//		System.out.println(avengerArrayLists);
 		System.out.println("Top " + topN + "most popular performers:");
-		System.out.println();
+		Collections.sort(avengerArrayLists, new Performer());
+//		System.out.println(avengerArrayLists);
+		System.out.println(avengerArrayLists.get(0).toString());
+		System.out.println(avengerArrayLists.get(1).toString());
+		System.out.println(avengerArrayLists.get(2).toString());
+		System.out.println(avengerArrayLists.get(3).toString());
 		System.out.println("All mentioned avengers in alphabetical order:");
+		
 		System.out.println();
+		
+		
 		
 	}
 	
-	
-	@Override
-	public int compare(Avenger a1, Avenger a2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
+
 	
 	
 	
