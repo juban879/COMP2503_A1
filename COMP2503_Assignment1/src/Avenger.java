@@ -76,7 +76,7 @@ public class Avenger implements Comparable<Avenger>{
 
 	public String toString() { return heroAlias + " aka " + heroName + " performed by " + 
 								performer + " mentioned " + " (n: " + nameFreq + " + a: " + 
-								aliasFreq + " + p: " + performerFreq + ") " + "time(s)\n"; 
+								aliasFreq + " + p: " + performerFreq + ") " + "time(s)"; 
 	
 	}
 	
