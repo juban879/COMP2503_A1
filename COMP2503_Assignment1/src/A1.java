@@ -107,7 +107,7 @@ public class A1 {
 				
 			}else if (avenger.getHeroName().equals(word)) {
 				isAvgFound = true;
-				avenger.setNameFreq();
+			avenger.setNameFreq();
 				
 			}else if (avenger.getPerformer().equals(word)) {
 				isAvgFound = true;
@@ -134,22 +134,26 @@ public class A1 {
 		printAvengersList();
 		System.out.println("Top " + topN + " most popular avengers:");
 		Collections.sort(avengerArrayLists, new TopAvengers());
-		if(avengerArrayLists.size()>=4) {
-		System.out.println(avengerArrayLists.get(0).toString());
-		System.out.println(avengerArrayLists.get(1).toString());
-		System.out.println(avengerArrayLists.get(2).toString());
-		System.out.println(avengerArrayLists.get(3).toString()+ "\n");
-		}
 		
+		for (int i = 0; i < avengerArrayLists.size(); i++) {
+			if ( i <= 4) {
+				System.out.println(avengerArrayLists.get(i).toString());
+			}else {
+				break;
+			}
+		}
+		System.out.println();
 		System.out.println("Top " + topN + " most popular performers:");
 		Collections.sort(avengerArrayLists, new Performer());
 		
-		if(avengerArrayLists.size()>=4) {
-		System.out.println(avengerArrayLists.get(0).toString());
-		System.out.println(avengerArrayLists.get(1).toString());
-		System.out.println(avengerArrayLists.get(2).toString());
-		System.out.println(avengerArrayLists.get(3).toString() + "\n");
+		for (int i = 0; i < avengerArrayLists.size(); i++) {
+			if ( i <= 4) {
+				System.out.println(avengerArrayLists.get(i).toString());
+			}else {
+				break;
+			}
 		}
+		System.out.println();
 		Collections.sort(avengerArrayLists);
 		System.out.println("All mentioned avengers in alphabetical order:");
 		printAvengersList();
