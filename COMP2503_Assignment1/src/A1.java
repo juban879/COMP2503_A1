@@ -121,6 +121,7 @@ public class A1 {
 		for (Avenger avg : avengersArrayList) {
 			System.out.println(avg.toString());
 		}
+		System.out.println();
 	}
 	/**
 	 * print the results
@@ -129,7 +130,7 @@ public class A1 {
 		System.out.println("Total number of words: " + totalwordcount);
 		System.out.println("Number of Avengers Mentioned: " + avengersArrayList.size());
 		System.out.println();
-		System.out.println("All avengers in the order they appeared in the input steam:");
+		System.out.println("All avengers in the order they appeared in the input stream:");
 		printAvengersList();
 		System.out.println("Top " + topN + " most popular avengers:");
 		Collections.sort(avengerArrayLists, new TopAvengers());
