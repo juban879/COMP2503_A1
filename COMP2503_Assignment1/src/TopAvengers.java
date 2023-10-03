@@ -3,7 +3,8 @@ import java.util.Comparator;
 public class TopAvengers implements Comparator<Avenger> {
 
 	@Override
-	/* This method orders the top 4 most frequently mentioned avengers ordered from most frequent to least, 
+	/** 
+	 * This method orders the top 4 most frequently mentioned avengers ordered from most frequent to least, 
 	 * then ascending alphabetical order of performer's last name.
 	 */
 	public int compare(Avenger a1, Avenger a2) {
