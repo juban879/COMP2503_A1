@@ -60,7 +60,12 @@ public class A1 {
 		//if an avenger with those properties has not been added, a new avenger object will be created and added to the list.  
 		while (input.hasNext()) {
 			String word = input.next();
-			word = word.trim().toLowerCase().replaceAll("'[^']*$", "").replaceAll("[^a-zA-Z]", "");
+			word = word.trim().toLowerCase();
+			if (word.contains("'")) {
+				word = word.substring(0, word.indexOf("'"));
+			}
+			
+			word = word.replaceAll("[^a-z]", "");
 			
 			if (!word.isBlank()) {
 				totalwordcount++;
