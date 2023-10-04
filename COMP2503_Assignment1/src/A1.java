@@ -64,7 +64,6 @@ public class A1 {
 			if (word.contains("'")) {
 				word = word.substring(0, word.indexOf("'"));
 			}
-			
 			word = word.replaceAll("[^a-z]", "");
 			
 			if (!word.isBlank()) {
