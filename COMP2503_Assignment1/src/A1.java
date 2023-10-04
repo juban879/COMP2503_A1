@@ -106,7 +106,7 @@ public class A1 {
 	 */
 	private boolean searchAvengerList(String word) {
 
-		boolean isAvgFound = false;//boolean[] avengerFlag = {false, false, false};
+		boolean isAvgFound = false; //boolean[] avengerFlag = {false, false, false};
 		for (Avenger avenger : avengersArrayList ) {
 			if (avenger.getHeroAlias().equals(word)) {
 				isAvgFound = true;
