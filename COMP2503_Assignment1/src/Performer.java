@@ -10,12 +10,10 @@ public class Performer implements Comparator<Avenger> {
 	public int compare(Avenger a1, Avenger a2) {
 		
 		int result = 0;
-		int performer1 = a1.getPerformerFreq();
-		int performer2 = a2.getPerformerFreq();
 		
-		if (performer1 > performer2) {
+		if (a1.getPerformerFreq() > a2.getPerformerFreq()) {
 			result = -1;
-		}else if (performer1 < performer2) {
+		}else if (a1.getPerformerFreq() < a1.getPerformerFreq()) {
 			result = 1;
 		}else {
 			result = a1.getHeroName().length() - a2.getHeroName().length();
