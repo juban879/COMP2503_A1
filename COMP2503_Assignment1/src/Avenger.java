@@ -113,6 +113,7 @@ public class Avenger implements Comparable<Avenger>{
 	/**
 	 * Overridden toString method to print avenger details according to output examples
 	 */
+	@Override
 	public String toString() { return heroAlias + " aka " + heroName + " performed by " + 
 								performer + " mentioned " + "(n: " + nameFreq + " + a: " + 
 								aliasFreq + " + p: " + performerFreq + ") " + "time(s)"; 
@@ -126,6 +127,10 @@ public class Avenger implements Comparable<Avenger>{
 	 */
 	@Override
 	public boolean equals(Object a) {
+		
+		if (a == null) {
+			return false;
+		}
 		Avenger obj = (Avenger) a;
 		boolean flag = false;
 		
