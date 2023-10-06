@@ -124,10 +124,12 @@ public class Avenger implements Comparable<Avenger>{
 	 * @param Avenger a avenger object
 	 * @return boolean flag, returns true if objects are the same, false if else
 	 */
-	public boolean equals(Avenger a) {
+	@Override
+	public boolean equals(Object a) {
+		Avenger obj = (Avenger) a;
 		boolean flag = false;
 		
-		if(this.getHeroAlias().equals(a.getHeroAlias())) {
+		if(this.getHeroAlias().equals(obj.getHeroAlias())) {
 			flag = true;
 		}
 		
